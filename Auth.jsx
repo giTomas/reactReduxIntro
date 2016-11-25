@@ -1,44 +1,8 @@
 import React from 'react';
-import {createStore} from 'redux';
+import {store, login, logout} from './store.js';
 
 
-//actions
-function login(username) {
-  return {
-    type: 'LOGIN',
-    value: username
-  }
-}
 
-function logout() {
-    return  {
-      type: 'LOGOUT',
-      value: 'guest'
-    };
-}
-
-//reducer
-const auth = function(state = {status: 'logged out', value: 'guest'}, action) {
-  switch (action.type) {
-    case 'LOGIN':
-      /*return Object.assign({}, state, {
-        status: 'logged in',
-        value: action.value
-      })*/
-      return {...state, status: 'logged in', value: action.value}
-    case 'LOGOUT':
-      /*return Object.assign({}, state, {
-        status: 'logged out',
-        value: action.value
-      })*/
-      return {...state, status: 'logged out', value: action.value}
-    default:
-      return state;
-  }
-}
-
-//store
-export const store = createStore(auth);
 
 //react component
 class Auth extends React.Component{
